@@ -12,8 +12,8 @@ check_directories:
   before_script:
     - apk add --no-cache --upgrade git # Install Git
   image: alpine:latest # Runtime environment is a Linux alpine docker container
-  #rules:
-  #  - if: $CI_PIPELINE_SOURCE == "external_pull_request_event" # Stage will only be executed in pull request
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "external_pull_request_event" # Stage will only be executed in pull request
   script:
     - git clone https://oauth2:${ACCESS_GITHUB_TOKEN}@github.com/hannes-hacker/secuer_ceremony_access.git
     - git clone https://oauth2:${AUTOMATION_ACCESS_TOKEN}@git.fim.uni-passau.de/hacker/secuer_ceremony_storage.git
@@ -27,8 +27,8 @@ check_additions:
   before_script:
     - apk add --no-cache --upgrade git # Install Git
   image: alpine:latest # Runtime environment is a Linux alpine docker container
-  #rules:
-  #  - if: $CI_PIPELINE_SOURCE == "external_pull_request_event" # Stage will only be executed in pull request
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "external_pull_request_event" # Stage will only be executed in pull request
   script:
     - git clone https://oauth2:${AUTOMATION_ACCESS_TOKEN}@git.fim.uni-passau.de/hacker/secuer_ceremony_storage.git
     - git clone https://oauth2:${ACCESS_GITHUB_TOKEN}@github.com/hannes-hacker/secuer_ceremony_access.git
@@ -43,8 +43,8 @@ check_verify:
     - apk add --no-cache --upgrade make # Install CMake
     - apk add --no-cache --upgrade clang # Install clang
   image: alpine:latest # Runtime environment is a Linux alpine docker container
-  #rules:
-  #  - if: $CI_PIPELINE_SOURCE == "external_pull_request_event" # Stage will only be executed in pull request
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "external_pull_request_event" # Stage will only be executed in pull request
   script:
     - git clone https://oauth2:${AUTOMATION_ACCESS_TOKEN}@git.fim.uni-passau.de/hacker/secuer_ceremony_storage.git
     - git clone https://oauth2:${ACCESS_GITHUB_TOKEN}@github.com/hannes-hacker/secuer_ceremony_access.git
