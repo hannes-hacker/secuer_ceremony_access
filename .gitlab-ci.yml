@@ -10,8 +10,9 @@ stages:
 check_directories:
   stage: structure
   before_script:
-    - apk add --no-cache --upgrade git # Install Git
-  image: alpine:latest # Runtime environment is a Linux alpine docker container
+    - apt-get update -y -qq
+    - apt-get install git -y # Install Git
+  image: ubuntu:latest # Runtime environment is a Linux alpine docker container
   #rules:
   #  - if: $CI_PIPELINE_SOURCE == "external_pull_request_event" # Stage will only be executed in pull request
   script:
@@ -25,8 +26,9 @@ check_directories:
 check_additions:
   stage: structure
   before_script:
-    - apk add --no-cache --upgrade git # Install Git
-  image: alpine:latest # Runtime environment is a Linux alpine docker container
+    - apt-get update -y -qq
+    - apt-get install git -y # Install Git
+  image: ubuntu:latest # Runtime environment is a Linux alpine docker container
   #rules:
   #  - if: $CI_PIPELINE_SOURCE == "external_pull_request_event" # Stage will only be executed in pull request
   script:
@@ -39,10 +41,11 @@ check_additions:
 check_verify:
   stage: verification
   before_script:
-    - apk add --no-cache --upgrade git # Install Git
-    - apk add --no-cache --upgrade make # Install CMake
-    - apk add --no-cache --upgrade clang # Install clang
-  image: alpine:latest # Runtime environment is a Linux alpine docker container
+    - apt-get update -y -qq
+    - apt-get install git -y # Install Git
+    - apt-get install make -y # Install CMake
+    - apt-get install clang -y # Install clang
+  image: ubuntu:latest # Runtime environment is a Linux alpine docker container
   #rules:
   #  - if: $CI_PIPELINE_SOURCE == "external_pull_request_event" # Stage will only be executed in pull request
   script:
